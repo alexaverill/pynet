@@ -14,7 +14,7 @@ positions=[['' for col in range(1)] for row in range(5)] #hold client positions
 #positions=[25]
 connections=0 #number of places to send things
 
-map = [[0 for col in range(6)] for row in range(4)] #map for placeholding and viewing on the server
+map = [[0 for col in range(12)] for row in range(10)] #map for placeholding and viewing on the server
 
 try:
 	so.bind((host,port))

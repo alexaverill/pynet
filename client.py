@@ -3,7 +3,8 @@ import socket
 import sys
 import os
 positions=[]
-map=[[0 for col in range(6)] for row in range(4)]
+m_col = 13		#variable to store columns in map
+map=[[0 for col in range(m_col)] for row in range(10)]
 host='192.168.2.2'
 #host=''
 port=8888
@@ -72,15 +73,21 @@ def create_map():		#general base map, may not be needed
 	x=0
 	for row in map:
 		y=0
-		for y in range(0,6):
-			map[x][y]="#"
+		for y in range(0,m_col):
+			map[x][y]="."
 			
 		x+=1
 
 def draw_map():			# Outputs map to screen
-	#os.system('clear')
+	os.system('clear')
+	c = 0	
+	str=''
 	for row in map:
-		print row
+		for x in range(0,m_col):
+			str+=map[c][x]
+		c+=1
+		print str
+		str=''
 
 def update_map(x,y,x1,y1):			#Updates user position, and clears old one
 	map[x1][y1]="#"
@@ -115,10 +122,10 @@ def main_loop():
 			if x>0:
 				x-=1
 		elif 'd' in user_input:
-			if y<6:
+			if y<12:
 				y+=1
 		elif 'w' in user_input:
-			if x<4:
+			if x<10:
 				x+=1
 		#new_update_map(x,y)
 		#update_data(str(x)+","+str(y))
